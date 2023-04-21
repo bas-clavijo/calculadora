@@ -46,8 +46,52 @@ def ingresarValores(tecla):
             entrada1.set(entrada2.get() + '/')
         elif tecla == '+':
             entrada1.set(entrada2.get() + '+')
-        elif
+        elif tecla == '-':
+            entrada1.set(entrada2.get() + '-')
 
+        entrada2.set('')
+
+    if tecla == '=':
+        entrada1.set(entrada1.get() + entrada2.get())
+        resultado = eval(entrada1.get())
+        entrada2.set(resultado)
+#funcion para ingresar valores desde el teclado    
+def ingresarValoresTeclado(event):
+    tecla = event.char
+
+    if tecla >='0' and tecla <='9' or tecla == '(' or tecla == ')' or tecla == '.':
+        entrada2.set(entrada2.get() + tecla)
+    if tecla == '*' or tecla == '/' or tecla == '+' or tecla == '-':
+        if tecla == '*':
+            entrada1.set(entrada2.get() + '*')
+        elif tecla == '/':
+            entrada1.set(entrada2.get() + '/')
+        elif tecla == '+':
+            entrada1.set(entrada2.get() + '+')
+        elif tecla == '-':
+            entrada1.set(entrada2.get() + '-')
+
+        entrada2.set('')
+
+    if tecla == '=':
+        entrada1.set(entrada1.get() + entrada2.get())
+        resultado = eval(entrada1.get())
+        entrada2.set(resultado)
+#funcion raiz cuadrada
+def raizCuadrada():
+    entrada1.set('')
+    resultado = math.sqrt(float(entrada2.get()))
+    entrada2.set(resultado)
+#funcion borrar de 1 a 1
+def borrar(event):
+    inicio = 0
+    final = len(entrada2.get())
+
+    entrada2.set(entrada2.get()[inicio:final-1])
+#funcion borrar todo
+def borrarTodo(event):
+    entrada1.set('')
+    entrada2.set('')
 #Se crea la ventana tkinter
 root = Tk()
 root.title("Calculadora")
@@ -93,19 +137,19 @@ button7 = ttk.Button(mainframe,text="7", style="BtnNum.TButton",command=lambda:i
 button8 = ttk.Button(mainframe,text="8", style="BtnNum.TButton",command=lambda:ingresarValores('8'))
 button9 = ttk.Button(mainframe,text="9", style="BtnNum.TButton",command=lambda:ingresarValores('9'))
 
-buttonBorrar= ttk.Button(mainframe, text=chr(9003), style="BtnBorrar.TButton")
-buttonBorrarTodo= ttk.Button(mainframe, text="C", style="BtnBorrar.TButton")
+buttonBorrar= ttk.Button(mainframe, text=chr(9003), style="BtnBorrar.TButton",command=lambda:borrar())
+buttonBorrarTodo= ttk.Button(mainframe, text="C", style="BtnBorrar.TButton",command=lambda:borrarTodo())
 buttonParentesisIzq = ttk.Button(mainframe, text="(", style="Btn.TButton",command=lambda:ingresarValores('('))
 buttonParentesisDer = ttk.Button(mainframe, text=")", style="Btn.TButton",command=lambda:ingresarValores(')'))
 buttonPunto = ttk.Button(mainframe, text=".", style="Btn.TButton", command=lambda:ingresarValores('.'))
 
-buttonDivision = ttk.Button(mainframe, text=chr(247), style="Btn.TButton")
-buttonMultiplicacion = ttk.Button(mainframe, text="x", style="Btn.TButton")
-buttonResta = ttk.Button(mainframe, text="-", style="Btn.TButton")
-buttonSuma = ttk.Button(mainframe, text="+", style="Btn.TButton")
+buttonDivision = ttk.Button(mainframe, text=chr(247), style="Btn.TButton",command=lambda:ingresarValores('/'))
+buttonMultiplicacion = ttk.Button(mainframe, text="x", style="Btn.TButton",command=lambda:ingresarValores('*'))
+buttonResta = ttk.Button(mainframe, text="-", style="Btn.TButton",command=lambda:ingresarValores('-'))
+buttonSuma = ttk.Button(mainframe, text="+", style="Btn.TButton",command=lambda:ingresarValores('+'))
 
-buttonIgual = ttk.Button(mainframe, text="=", style="Btn.TButton")
-buttonRaizCuadrada = ttk.Button(mainframe, text="√", style="Btn.TButton")
+buttonIgual = ttk.Button(mainframe, text="=", style="Btn.TButton",command=lambda:ingresarValores('='))
+buttonRaizCuadrada = ttk.Button(mainframe, text="√", style="Btn.TButton",command=lambda:raizCuadrada())
 
 #Se muestran los botones en pantalla
 buttonParentesisIzq.grid(column=0, row=2, sticky=(W,N,E,S))
@@ -167,4 +211,7 @@ for child in mainframe.winfo_children():
 #evento modo oscuro
 root.bind('<KeyPress-o>', temaOscuro)
 root.bind('<KeyPress-c>', temaClaro)
+root.bind('<Key>', ingresarValoresTeclado)
+root.bind('<KeyPress-b>', borrar)
+root.bind('<KeyPress-q>', borrarTodo)
 root.mainloop()
