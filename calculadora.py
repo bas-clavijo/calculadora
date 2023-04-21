@@ -5,6 +5,37 @@ from tkinter import *
 from tkinter import ttk #widgets tematicos
 import math 
 
+#funcion modo oscuro
+def temaOscuro(*args):
+    estilos.configure('mainframe.TFrame', background="#010924")
+
+    estilosLabel1.configure('Label1.TLabel', background="#010924",foreground="white")
+    estilosLabel2.configure('Label2.TLabel', background="#010924",foreground="white")
+
+    estilosBtnNum.configure('BtnNum.TButton',background="#00044A",foreground="white")
+    estilosBtnNum.map('BtnNum.TButton', background=[('active', '#020A90')])
+
+    estilosBtnBorrar.configure('BtnBorrar.TButton',background="#010924",foreground="white")
+    estilosBtnBorrar.map('BtnBorrar.TButton', background=[('active', '#000AB1')])
+
+    estilosBtn.configure('Btn.TButton', background="#010924",foreground="white")
+    estilosBtn.map('Btn.TButton', background=[('active', '#000AB1')])
+
+def temaClaro(*args):
+    estilos.configure('mainframe.TFrame', background="#DBDBDB", foreground="black")
+
+    estilosLabel1.configure('Label1.TLabel', background="#DBDBDB",foreground="black")
+    estilosLabel2.configure('Label2.TLabel', background="#DBDBDB",foreground="black")
+
+    estilosBtnNum.configure('BtnNum.TButton', background="#FFFFFF", foreground="black")
+    estilosBtnNum.map('BtnNum.TButton', background=[('active', '#B9B9B9')])
+
+    estilosBtnBorrar.configure('BtnBorrar.TButton',background="#CECECE",foreground="black")
+    estilosBtnBorrar.map('BtnBorrar.TButton', background=[('active', '#858585')])
+
+    estilosBtn.configure('Btn.TButton', background="#CECECE", foreground="black")
+    estilosBtn.map('Btn.TButton', background=[('active', '#858585')])
+
 #Se crea la ventana tkinter
 root = Tk()
 root.title("Calculadora")
@@ -121,6 +152,7 @@ estilosBtn.map('Btn.TButton',background=[('active', '#858585')])
 for child in mainframe.winfo_children():
     child.grid_configure(ipady=10, padx=1, pady=1)
 
-
-
+#evento modo oscuro
+root.bind('<KeyPress-o>', temaOscuro)
+root.bind('<KeyPress-c>', temaClaro)
 root.mainloop()
