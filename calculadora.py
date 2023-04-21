@@ -9,19 +9,34 @@ import math
 root = Tk()
 root.title("Calculadora")
 root.geometry("+500+80")
+root.columnconfigure(0, weight=1)
+root.rowconfigure(0, weight=1)
 
 #Se crea el frame
 mainframe = ttk.Frame(root,style="mainframe.TFrame")
-mainframe.grid(column=0, row=0)
+mainframe.grid(column=0, row=0, sticky=(W, N, E, S))
+mainframe.columnconfigure(0, weight=1)
+mainframe.columnconfigure(1, weight=1)
+mainframe.columnconfigure(2, weight=1)
+mainframe.columnconfigure(3, weight=1)
+
+mainframe.rowconfigure(0, weight=1)
+mainframe.rowconfigure(1, weight=1)
+mainframe.rowconfigure(2, weight=1)
+mainframe.rowconfigure(3, weight=1)
+mainframe.rowconfigure(4, weight=1)
+mainframe.rowconfigure(5, weight=1)
+mainframe.rowconfigure(6, weight=1)
+mainframe.rowconfigure(7, weight=1)
 
 #Se crean los label de respuesta
 entrada1 = StringVar()
 labelEntrada1 = ttk.Label(mainframe, textvariable=entrada1, style="Label1.TLabel")
-labelEntrada1.grid(column=0, row=0, columnspan=4, sticky=(W, E))
+labelEntrada1.grid(column=0, row=0, columnspan=4, sticky=(W,N,E,S))
 
 entrada2 = StringVar()
 labelEntrada2 = ttk.Label(mainframe, textvariable=entrada2, style="Label2.TLabel")
-labelEntrada2.grid(column=0, row=1, columnspan=4, sticky=(W, E))
+labelEntrada2.grid(column=0, row=1, columnspan=4, sticky=(W,N,E,S))
 
 #Botones
 button0 = ttk.Button(mainframe,text="0", style="BtnNum.TButton")
@@ -50,32 +65,32 @@ buttonIgual = ttk.Button(mainframe, text="=", style="Btn.TButton")
 buttonRaizCuadrada = ttk.Button(mainframe, text="√", style="Btn.TButton")
 
 #Se muestran los botones en pantalla
-buttonParentesisIzq.grid(column=0, row=2)
-buttonParentesisDer.grid(column=1, row=2)
-buttonBorrarTodo.grid(column=2, row=2)
-buttonBorrar.grid(column=3, row=2)
+buttonParentesisIzq.grid(column=0, row=2, sticky=(W,N,E,S))
+buttonParentesisDer.grid(column=1, row=2, sticky=(W,N,E,S))
+buttonBorrarTodo.grid(column=2, row=2, sticky=(W,N,E,S))
+buttonBorrar.grid(column=3, row=2, sticky=(W,N,E,S))
 
-button7.grid(column=0, row=3)
-button8.grid(column=1, row=3)
-button9.grid(column=2, row=3)
-buttonDivision.grid(column=3, row=3)
+button7.grid(column=0, row=3, sticky=(W,N,E,S))
+button8.grid(column=1, row=3, sticky=(W,N,E,S))
+button9.grid(column=2, row=3, sticky=(W,N,E,S))
+buttonDivision.grid(column=3, row=3, sticky=(W,N,E,S))
 
-button4.grid(column=0, row=4)
-button5.grid(column=1, row=4)
-button6.grid(column=2, row=4)
-buttonMultiplicacion.grid(column=3, row=4)
+button4.grid(column=0, row=4, sticky=(W,N,E,S))
+button5.grid(column=1, row=4, sticky=(W,N,E,S))
+button6.grid(column=2, row=4, sticky=(W,N,E,S))
+buttonMultiplicacion.grid(column=3, row=4, sticky=(W,N,E,S))
 
-button1.grid(column=0, row=5)
-button2.grid(column=1, row=5)
-button3.grid(column=2, row=5)
-buttonSuma.grid(column=3, row=5)
+button1.grid(column=0, row=5, sticky=(W,N,E,S))
+button2.grid(column=1, row=5, sticky=(W,N,E,S))
+button3.grid(column=2, row=5, sticky=(W,N,E,S))
+buttonSuma.grid(column=3, row=5, sticky=(W,N,E,S))
 
-button0.grid(column=0, row=6, columnspan=2, sticky=(W,E))
-buttonPunto.grid(column=2, row=6)
-buttonResta.grid(column=3, row=6)
+button0.grid(column=0, row=6, columnspan=2, sticky=(W,N,E,S))
+buttonPunto.grid(column=2, row=6, sticky=(W,N,E,S))
+buttonResta.grid(column=3, row=6, sticky=(W,N,E,S))
 
-buttonIgual.grid(column=0, row=7, columnspan=3, sticky=(W,E))
-buttonRaizCuadrada.grid(column=3, row=7)
+buttonIgual.grid(column=0, row=7, columnspan=3, sticky=(W,N,E,S))
+buttonRaizCuadrada.grid(column=3, row=7, sticky=(W,N,E,S))
 
 #Se agregan los estilos 
 estilos = ttk.Style()
