@@ -92,13 +92,15 @@ estilosLabel2.configure('Label2.TLabel', font="arial 40", anchor="e")
 #estilos botones
 estilosBtnNum = ttk.Style()
 estilosBtnNum.configure('BtnNum.TButton', font="arial 22", width=5, background="#FFFFFF", relief="flat")
+estilosBtnNum.map('BtnNum.TButton',background=[('active', '#858585')])
 
 estilosBtnBorrar = ttk.Style()
 estilosBtnBorrar.configure('BtnBorrar.TButton', font="arial 22", width=5, background="#CECECE", relief="flat")
-estilosBtnBorrar.map('BtnBorrar.TButton', foreground=[('active', '#FF0000')])
+estilosBtnBorrar.map('BtnBorrar.TButton', foreground=[('active', '#FF0000')], background=[('active', '#858585')])
 
 estilosBtn = ttk.Style()
 estilosBtn.configure('Btn.TButton', font="arial 22", width=5, background="#CECECE", relief="flat")
+estilosBtn.map('Btn.TButton',background=[('active', '#858585')])
 
 #funcion para dar espacio a los botones
 for child in mainframe.winfo_children():
