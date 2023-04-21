@@ -20,7 +20,7 @@ def temaOscuro(*args):
 
     estilosBtn.configure('Btn.TButton', background="#010924",foreground="white")
     estilosBtn.map('Btn.TButton', background=[('active', '#000AB1')])
-
+#funcion modo claro
 def temaClaro(*args):
     estilos.configure('mainframe.TFrame', background="#DBDBDB", foreground="black")
 
@@ -35,6 +35,18 @@ def temaClaro(*args):
 
     estilosBtn.configure('Btn.TButton', background="#CECECE", foreground="black")
     estilosBtn.map('Btn.TButton', background=[('active', '#858585')])
+#funcion ingresar valor
+def ingresarValores(tecla):
+    if tecla >='0' and tecla <='9' or tecla == '(' or tecla == ')' or tecla == '.':
+        entrada2.set(entrada2.get() + tecla)
+    if tecla == '*' or tecla == '/' or tecla == '+' or tecla == '-':
+        if tecla == '*':
+            entrada1.set(entrada2.get() + '*')
+        elif tecla == '/':
+            entrada1.set(entrada2.get() + '/')
+        elif tecla == '+':
+            entrada1.set(entrada2.get() + '+')
+        elif
 
 #Se crea la ventana tkinter
 root = Tk()
@@ -70,22 +82,22 @@ labelEntrada2 = ttk.Label(mainframe, textvariable=entrada2, style="Label2.TLabel
 labelEntrada2.grid(column=0, row=1, columnspan=4, sticky=(W,N,E,S))
 
 #Botones
-button0 = ttk.Button(mainframe,text="0", style="BtnNum.TButton")
-button1 = ttk.Button(mainframe,text="1", style="BtnNum.TButton")
-button2 = ttk.Button(mainframe,text="2", style="BtnNum.TButton")
-button3 = ttk.Button(mainframe,text="3", style="BtnNum.TButton")
-button4 = ttk.Button(mainframe,text="4", style="BtnNum.TButton")
-button5 = ttk.Button(mainframe,text="5", style="BtnNum.TButton")
-button6 = ttk.Button(mainframe,text="6", style="BtnNum.TButton")
-button7 = ttk.Button(mainframe,text="7", style="BtnNum.TButton")
-button8 = ttk.Button(mainframe,text="8", style="BtnNum.TButton")
-button9 = ttk.Button(mainframe,text="9", style="BtnNum.TButton")
+button0 = ttk.Button(mainframe,text="0", style="BtnNum.TButton",command=lambda:ingresarValores('0'))
+button1 = ttk.Button(mainframe,text="1", style="BtnNum.TButton",command=lambda:ingresarValores('1'))
+button2 = ttk.Button(mainframe,text="2", style="BtnNum.TButton",command=lambda:ingresarValores('2'))
+button3 = ttk.Button(mainframe,text="3", style="BtnNum.TButton",command=lambda:ingresarValores('3'))
+button4 = ttk.Button(mainframe,text="4", style="BtnNum.TButton",command=lambda:ingresarValores('4'))
+button5 = ttk.Button(mainframe,text="5", style="BtnNum.TButton",command=lambda:ingresarValores('5'))
+button6 = ttk.Button(mainframe,text="6", style="BtnNum.TButton",command=lambda:ingresarValores('6'))
+button7 = ttk.Button(mainframe,text="7", style="BtnNum.TButton",command=lambda:ingresarValores('7'))
+button8 = ttk.Button(mainframe,text="8", style="BtnNum.TButton",command=lambda:ingresarValores('8'))
+button9 = ttk.Button(mainframe,text="9", style="BtnNum.TButton",command=lambda:ingresarValores('9'))
 
 buttonBorrar= ttk.Button(mainframe, text=chr(9003), style="BtnBorrar.TButton")
 buttonBorrarTodo= ttk.Button(mainframe, text="C", style="BtnBorrar.TButton")
-buttonParentesisIzq = ttk.Button(mainframe, text="(", style="Btn.TButton")
-buttonParentesisDer = ttk.Button(mainframe, text=")", style="Btn.TButton")
-buttonPunto = ttk.Button(mainframe, text=".", style="Btn.TButton")
+buttonParentesisIzq = ttk.Button(mainframe, text="(", style="Btn.TButton",command=lambda:ingresarValores('('))
+buttonParentesisDer = ttk.Button(mainframe, text=")", style="Btn.TButton",command=lambda:ingresarValores(')'))
+buttonPunto = ttk.Button(mainframe, text=".", style="Btn.TButton", command=lambda:ingresarValores('.'))
 
 buttonDivision = ttk.Button(mainframe, text=chr(247), style="Btn.TButton")
 buttonMultiplicacion = ttk.Button(mainframe, text="x", style="Btn.TButton")
